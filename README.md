@@ -11,3 +11,5 @@
 - how to use `@Primary` on bean
 - how to set `@Profile` on bean
 - how to set `default` profile on bean when no other profile is set
+- how to use `@ComponentScan` to scan other packages
+- how to use `@ImportResource` to add XML Configuration

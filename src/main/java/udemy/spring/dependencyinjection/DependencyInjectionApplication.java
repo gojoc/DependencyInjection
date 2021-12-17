@@ -10,6 +10,8 @@ import udemy.spring.dependencyinjection.controller.I18nController;
 import udemy.spring.dependencyinjection.controller.PetController;
 import udemy.spring.dependencyinjection.controller.PropertyInjectedGreetingController;
 import udemy.spring.dependencyinjection.controller.SetterInjectedGreetingController;
+import udemy.spring.dependencyinjection.service.PrototypeBean;
+import udemy.spring.dependencyinjection.service.SingletonBean;
 
 @Slf4j
 @SpringBootApplication
@@ -35,5 +37,15 @@ public class DependencyInjectionApplication {
         log.info("[DependencyInjectionApplication] I18nController: {}", i18nController.getGreeting());
         PetController petController = (PetController) applicationContext.getBean("petController");
         log.info("[DependencyInjectionApplication] PetController: {}", petController.getPetType());
+
+        SingletonBean firstSingletonBean = applicationContext.getBean(SingletonBean.class);
+        log.info("[DependencyInjectionApplication] firstSingletonBean: {}", firstSingletonBean.getScope());
+        SingletonBean secondSingletonBean = applicationContext.getBean(SingletonBean.class);
+        log.info("[DependencyInjectionApplication] secondSingletonBean: {}", secondSingletonBean.getScope());
+
+        PrototypeBean firstPrototypeBean = applicationContext.getBean(PrototypeBean.class);
+        log.info("[DependencyInjectionApplication] firstPrototypeBean: {}", firstPrototypeBean.getScope());
+        PrototypeBean secondPrototypeBean = applicationContext.getBean(PrototypeBean.class);
+        log.info("[DependencyInjectionApplication] secondPrototypeBean: {}", secondPrototypeBean.getScope());
     }
 }

@@ -1,13 +1,14 @@
 package udemy.spring.dependencyinjection.service;
 
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Service;
+import lombok.AllArgsConstructor;
+import udemy.spring.dependencyinjection.repository.EnglishGreetingRepository;
 
-@Profile("EN")
-@Service("i18nService")
+@AllArgsConstructor
 public class I18nEnglishGreetingServiceImplementation implements GreetingService {
+    private final EnglishGreetingRepository englishGreetingRepository;
+
     @Override
     public String getGreeting() {
-        return "Hello";
+        return englishGreetingRepository.getGreeting();
     }
 }

@@ -2,7 +2,7 @@ package udemy.spring.dependencyinjection.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import udemy.spring.dependencyinjection.service.PetService;
+import udemy.spring.pet.service.PetService;
 
 @Controller
 @AllArgsConstructor
