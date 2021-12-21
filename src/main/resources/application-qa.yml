@@ -1,0 +1,5 @@
+udemy:
+  spring:
+    username: qualityAssuranceUsername
+    password: qualityAssurancePassword
+    url: qualityAssuranceUrl

@@ -1,10 +1,12 @@
 package udemy.spring.dependencyinjection.configuration;
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import udemy.spring.dependencyinjection.datasource.DataSource;
 import udemy.spring.dependencyinjection.repository.EnglishGreetingRepository;
 import udemy.spring.dependencyinjection.repository.EnglishGreetingRepositoryImplementation;
 import udemy.spring.dependencyinjection.service.I18nEnglishGreetingServiceImplementation;
@@ -15,9 +17,19 @@ import udemy.spring.dependencyinjection.service.SetterInjectedGreetingServiceImp
 import udemy.spring.pet.service.PetService;
 import udemy.spring.pet.service.PetServiceFactory;
 
+@EnableConfigurationProperties(DataSourceConstructorConfiguration.class)
 @ImportResource("classpath:configuration.xml")
 @Configuration
 public class GreetingServiceConfiguration {
+    @Bean
+    DataSource dataSource(DataSourceConstructorConfiguration dataSourceConstructorConfiguration) {
+        return DataSource.builder()
+                .username(dataSourceConstructorConfiguration.getUsername())
+                .password(dataSourceConstructorConfiguration.getPassword())
+                .url(dataSourceConstructorConfiguration.getUrl())
+                .build();
+    }
+
     @Bean
     EnglishGreetingRepository englishGreetingRepository() {
         return new EnglishGreetingRepositoryImplementation();

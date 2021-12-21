@@ -1,0 +1,5 @@
+udemy:
+  spring:
+    username: developmentUsername
+    password: developmentPassword
+    url: developmentUrl

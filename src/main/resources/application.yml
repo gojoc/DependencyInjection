@@ -1,3 +1,20 @@
 spring:
   profiles:
-    active: EN, cat
+    active:
+      - EN
+      - cat
+      - prod
+udemy:
+  spring:
+    username: username
+    password: password
+    url: url
+---
+spring:
+  profiles: prod
+udemy:
+  spring:
+    username: productionUsername
+    password: productionPassword
+    url: productionUrl
+
